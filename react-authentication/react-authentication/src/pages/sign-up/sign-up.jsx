@@ -165,13 +165,6 @@ navigate('/login')
         </div>
 
         <h1>Create an account</h1>
-
-        <div className="auth-tabs">
-          <button className="active"
-          onClick={formStateHandler}>Sign up</button>
-          <button>Log in</button>
-        </div>
-
         <form className="signup-form">
 
           <div className="input-group">
@@ -192,6 +185,7 @@ navigate('/login')
           <div className="input-group">
             <label>Email</label>
             <input type="email" placeholder="Enter your email"
+            autoComplete="new-email"
                         onChange={(e)=>{
                 setFormState({
                     ...formState,
@@ -204,6 +198,7 @@ navigate('/login')
             <label>Password</label>
             <div className="password-box">
               <input type="password" placeholder="Create a password"
+              autoComplete="new-password"
                           onChange={(e)=>{
             setFormState({
                 ...formState,
@@ -225,7 +220,8 @@ navigate('/login')
 
           <p className="login-text">
             Already have an account?
-            <span> Log in</span>
+            <Link to='/login' style={{textDecoration:'none'}}><span> Log in</span></Link>
+            
           </p>
 
         </form>

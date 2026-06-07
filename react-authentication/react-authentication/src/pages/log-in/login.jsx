@@ -3,46 +3,46 @@
 // import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
 // const LogIn = ()=>{
-//     const navigate = useNavigate();
-//     //formState
-//     const [formState,setFormState] = useState({
-//         email : '',
-//         password : ''
-//     });
-//     //formState handler function
-//     const formStateHandler = ()=>{
-//         if(formState.name == '' || formState.email == '' || formState.password == ''){
-//             alert('plz enter data')
-//             return
-//         }
-//         else{
-//             let getData = localStorage.getItem('user')
-//         if(getData){
-//             let jsonData = JSON.parse(getData);
-//             console.log(jsonData);
-//             if(formState.email == jsonData.email && formState.password == jsonData.password){
-//                 alert('you have logged in successfully')
-//                 navigate('/')
+    // const navigate = useNavigate();
+    // //formState
+    // const [formState,setFormState] = useState({
+    //     email : '',
+    //     password : ''
+    // });
+    // //formState handler function
+    // const formStateHandler = ()=>{
+    //     if(formState.name == '' || formState.email == '' || formState.password == ''){
+    //         alert('plz enter data')
+    //         return
+    //     }
+    //     else{
+    //         let getData = localStorage.getItem('user')
+    //     if(getData){
+    //         let jsonData = JSON.parse(getData);
+    //         console.log(jsonData);
+    //         if(formState.email == jsonData.email && formState.password == jsonData.password){
+    //             alert('you have logged in successfully')
+    //             navigate('/')
 
 
-//             }
-//             else{
-//                 alert('incorrect email or password, try again')
+    //         }
+    //         else{
+    //             alert('incorrect email or password, try again')
 
-//             }
-//         }
-//         else(
-//             alert('you have not account signup first'),
-//             navigate('/sign-up')
-//         )
-//         //clear inputs 
-//         setFormState({
-//             email : '',
-//             password : ''
-//         })
-//         }
+    //         }
+    //     }
+    //     else(
+    //         alert('you have not account signup first'),
+    //         navigate('/sign-up')
+    //     )
+    //     //clear inputs 
+    //     setFormState({
+    //         email : '',
+    //         password : ''
+    //     })
+    //     }
 
-//     }
+    // }
 //     return(
 //        <>
 //        <h1>LogIn page</h1>
@@ -51,12 +51,12 @@
 //             <input type="email" placeholder="Enter your email"
 //             autoComplete="new-email" 
 //             value={formState.email}
-//             onChange={(e)=>{
-//                 setFormState({
-//                     ...formState,
-//                     email : e.target.value
-//                 })
-//             }} />
+            // onChange={(e)=>{
+            //     setFormState({
+            //         ...formState,
+            //         email : e.target.value
+            //     })
+            // }} />
 //         </label>
 //        </div>
 
@@ -65,12 +65,12 @@
 //             <input type="password" placeholder="Enter your password"
 //             autoComplete="new-password"
 //             value={formState.password}
-//             onChange={(e)=>{
-//             setFormState({
-//                 ...formState,
-//                 password : e.target.value
-//             })
-//             }} />
+            // onChange={(e)=>{
+            // setFormState({
+            //     ...formState,
+            //     password : e.target.value
+            // })
+            // }} />
 //         </label>
 //        </div>
 //        <button onClick={formStateHandler}>Log In</button>
@@ -85,10 +85,53 @@
 
 
 
-import React from "react";
+//login.jsx
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./login.css";
 
 const Login = () => {
+        const navigate = useNavigate();
+    //formState
+    const [formState,setFormState] = useState({
+        email : '',
+        password : ''
+    });
+    //formState handler function
+    const formStateHandler = ()=>{
+        if(formState.name == '' || formState.email == '' || formState.password == ''){
+            alert('plz enter data')
+            return
+        }
+        else{
+            let getData = localStorage.getItem('user')
+        if(getData){
+            let jsonData = JSON.parse(getData);
+            console.log(jsonData);
+            if(formState.email == jsonData.email && formState.password == jsonData.password){
+                alert('you have logged in successfully')
+                navigate('/')
+
+
+            }
+            else{
+                alert('incorrect email or password, try again')
+
+            }
+        }
+        else(
+            alert('you have not account signup first'),
+            navigate('/sign-up')
+        )
+        //clear inputs 
+        setFormState({
+            email : '',
+            password : ''
+        })
+        }
+
+    }
   return (
     <div className="login-container">
       <div className="login-card">
@@ -101,12 +144,6 @@ const Login = () => {
         <p className="subtitle">
           Enter your credentials to access your account.
         </p>
-
-        <div className="auth-tabs">
-          <button>Sign up</button>
-          <button className="active">Log in</button>
-        </div>
-
         <form className="login-form">
 
           <div className="input-group">
@@ -114,6 +151,14 @@ const Login = () => {
             <input
               type="email"
               placeholder="Enter your email"
+              autoComplete="new-email"
+              value={formState.email}
+                          onChange={(e)=>{
+                setFormState({
+                    ...formState,
+                    email : e.target.value
+                })
+            }}
             />
           </div>
 
@@ -124,37 +169,27 @@ const Login = () => {
               <input
                 type="password"
                 placeholder="Enter your password"
+                autoComplete="new-password"
+                value={formState.password}
+                            onChange={(e)=>{
+            setFormState({
+                ...formState,
+                password : e.target.value
+            })
+            }}
               />
               <span>👁</span>
             </div>
           </div>
 
-          <div className="options">
-            <label>
-              <input type="checkbox" />
-              Remember me
-            </label>
-
-            <span className="forgot-password">
-              Forgot password?
-            </span>
-          </div>
-
-          <button className="login-btn">
+          <button className="login-btn" onClick={formStateHandler}>
             Log in
-          </button>
-
-          <button className="google-btn">
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
-              alt="Google"
-            />
-            Sign in with Google
           </button>
 
           <p className="signup-text">
             Don't have an account?
-            <span> Sign up</span>
+            <Link to='/sign-up' style={{textDecoration:'none'}}><span> Sign up</span></Link>
+            
           </p>
 
         </form>
