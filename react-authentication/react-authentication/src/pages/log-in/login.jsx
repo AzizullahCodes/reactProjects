@@ -22,6 +22,7 @@ const LogIn = ()=>{
             console.log(jsonData);
             if(formState.email == jsonData.email && formState.password == jsonData.password){
                 alert('you have logged in successfully')
+                navigate('/')
 
 
             }
