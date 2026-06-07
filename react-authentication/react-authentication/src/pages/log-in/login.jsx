@@ -14,7 +14,7 @@ const LogIn = () => {
     });
     //formState handler function
     const formStateHandler = ()=>{
-        if(formState.name == '' || formState.email == '' || formState.password == ''){
+        if(formState.email == '' || formState.password == ''){
             alert('plz enter data')
             return
         }

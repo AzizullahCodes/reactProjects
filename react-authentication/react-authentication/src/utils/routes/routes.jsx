@@ -5,6 +5,7 @@ import SignUp from "../../pages/sign-up/sign-up";
 import LogIn from "../../pages/log-in/login";
 import Home from "../../pages/home/home";
 import About from "../../pages/about/about";
+import Contact from "../../pages/contact/contact";
 import PublicRoutes from "../public-routes/public-routes";
 import ProtectedRoutes from "../protected-routes/protected-routes";
 const AppRoutes = ()=>{
@@ -19,7 +20,8 @@ const AppRoutes = ()=>{
             {/* protected-routes */}
             <Route element={<ProtectedRoutes/>}>
  <Route path="/" element={<Home/>}/>
-            <Route path="/About" element={<About/>}/>
+            <Route path="/about" element={<About/>}/>
+            <Route path="/contact" element={<Contact/>}/>
             </Route>
             
         </Routes>
