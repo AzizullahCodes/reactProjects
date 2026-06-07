@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import "./login.css";
 
 const LogIn = () => {
@@ -15,7 +16,8 @@ const LogIn = () => {
     //formState handler function
     const formStateHandler = ()=>{
         if(formState.email == '' || formState.password == ''){
-            alert('plz enter data')
+            // alert('plz enter data')
+            Swal.fire("Plz enter your data!");
             return
         }
         else{
@@ -24,18 +26,36 @@ const LogIn = () => {
             let jsonData = JSON.parse(getData);
             console.log(jsonData);
             if(formState.email == jsonData.email && formState.password == jsonData.password){
-                alert('you have logged in successfully')
+                // alert('you have logged in successfully')
+                Swal.fire({
+  title: "You have Logged In Successfuly!",
+  icon: "success",
+  draggable: true
+});
+
                 navigate('/')
 
 
             }
             else{
-                alert('incorrect email or password, try again')
+                // alert('incorrect email or password, try again')
+                Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: "You entered incorrect email or password, Try again!",
+ 
+});
 
             }
         }
         else(
-            alert('you have not account signup first'),
+            // alert('you have not account signup first'),
+            Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: "You have not account, sign up first!",
+  
+}),
             navigate('/sign-up')
         )
         //clear inputs 

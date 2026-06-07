@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import "./sign-up.css";
 
 const SignUp = () => {
@@ -17,13 +18,19 @@ const SignUp = () => {
 if(
     formState.name == '' || formState.email == '' || formState.password == ''
 ){
-    alert('plz enter data')
+    // alert('plz enter data')
+    Swal.fire("Plz enter your data!");
 }
 else{
     //first we see that if user is availale in localstorage if available we get/else we store it in localstorage
 let getUser = JSON.parse(localStorage.getItem('user'));
 if(getUser){
-    alert('user already existed in local storage');
+    // alert('user already existed in local storage'); 
+    Swal.fire({
+  title: "user already existed!",
+  icon: "success",
+  draggable: true
+});
     navigate('/login')
     return
 }
@@ -45,7 +52,12 @@ else{
 let stringifyObject = JSON.stringify(obj);
 localStorage.setItem('user',stringifyObject)
 }
-alert('you have sign up successfuly')
+// alert('you have sign up successfuly')
+Swal.fire({
+  title: "You have sign up successfully!",
+  icon: "success",
+  draggable: true
+});
 navigate('/login')
 
        
