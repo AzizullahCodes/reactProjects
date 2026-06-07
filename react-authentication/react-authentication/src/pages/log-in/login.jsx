@@ -91,7 +91,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./login.css";
 
-const Login = () => {
+const LogIn = () => {
         const navigate = useNavigate();
     //formState
     const [formState,setFormState] = useState({
@@ -144,7 +144,7 @@ const Login = () => {
         <p className="subtitle">
           Enter your credentials to access your account.
         </p>
-        <form className="login-form">
+        <div className="login-form">
 
           <div className="input-group">
             <label>Email</label>
@@ -192,11 +192,11 @@ const Login = () => {
             
           </p>
 
-        </form>
+        </div>
 
       </div>
     </div>
   );
 };
 
-export default Login;
+export default LogIn;

@@ -165,7 +165,7 @@ navigate('/login')
         </div>
 
         <h1>Create an account</h1>
-        <form className="signup-form">
+        <div className="signup-form">
 
           <div className="input-group">
             <label>Name</label>
@@ -224,7 +224,7 @@ navigate('/login')
             
           </p>
 
-        </form>
+        </div>
       </div>
     </div>
   );
