@@ -46,7 +46,7 @@ const Home = () => {
           👋 Welcome Back
         </div>
 
-        <h1>Dashboard</h1>
+        <h1>HOME</h1>
 
         <h2>
           {`Welcome ${getData.name}`}
@@ -54,8 +54,7 @@ const Home = () => {
 
         <p>
           You have successfully logged into your account.
-          Manage your profile, settings, and explore
-          everything from your dashboard.
+          welcome on home page.
         </p>
 
         <button onClick={logoutHandler}>
