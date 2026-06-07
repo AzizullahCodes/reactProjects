@@ -11,7 +11,12 @@ const LogIn = ()=>{
     });
     //formState handler function
     const formStateHandler = ()=>{
-        let getData = localStorage.getItem('user')
+        if(formState.name == '' || formState.email == '' || formState.password == ''){
+            alert('plz enter data')
+            return
+        }
+        else{
+            let getData = localStorage.getItem('user')
         if(getData){
             let jsonData = JSON.parse(getData);
             console.log(jsonData);
@@ -34,6 +39,7 @@ const LogIn = ()=>{
             email : '',
             password : ''
         })
+        }
 
     }
     return(
@@ -66,9 +72,9 @@ const LogIn = ()=>{
             }} />
         </label>
        </div>
-       <button onClick={formStateHandler}>Sign up</button>
+       <button onClick={formStateHandler}>Log In</button>
        <p>Don't have an account?sign up first
-        <Link to='/sign-up'>Login</Link>
+        <Link to='/sign-up'>sign-up</Link>
        </p>
        </>
     )

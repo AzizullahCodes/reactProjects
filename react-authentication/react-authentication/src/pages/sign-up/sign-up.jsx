@@ -12,7 +12,13 @@ const SignUp = ()=>{
     });
     //formState handler function
     const formStateHandler = ()=>{
-//first we see that if user is availale in localstorage if available we get/else we store it in localstorage
+if(
+    formState.name == '' || formState.email == '' || formState.password == ''
+){
+    alert('plz enter data')
+}
+else{
+    //first we see that if user is availale in localstorage if available we get/else we store it in localstorage
 let getUser = JSON.parse(localStorage.getItem('user'));
 if(getUser){
     alert('user already existed in local storage')
@@ -39,6 +45,7 @@ alert('you have sign up successfuly')
 navigate('/login')
 
        
+}
     }
     return(
        <>
