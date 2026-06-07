@@ -25,6 +25,7 @@
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import "./home.css";
 
 const Home = () => {
@@ -33,6 +34,12 @@ const Home = () => {
 
   // log out function
   const logoutHandler = () => {
+
+    Swal.fire({
+  title: "Your account has been deleted",
+  icon: "success",
+  draggable: true
+});
     localStorage.removeItem("user");
     navigate("/login");
   };
