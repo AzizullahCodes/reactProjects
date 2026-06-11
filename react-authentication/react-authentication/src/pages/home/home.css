@@ -96,6 +96,9 @@
 }
 
 @media (max-width: 768px) {
+  /* .home-container{
+    padding-top: 90px;
+  } */
   .welcome-card {
     padding: 35px 20px;
   }
