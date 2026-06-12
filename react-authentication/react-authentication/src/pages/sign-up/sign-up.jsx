@@ -169,8 +169,11 @@ const SignUp = () => {
       })
       //apply condition
       if(isExisted){
-        alert('user already existed with this email')
-        navigate('/login')
+    Swal.fire({
+  title: "user already existed with this email you entered now!",
+  icon: "success",
+  draggable: true
+});        navigate('/login')
       }
 else{
    //creating an object to storing in localstorage
@@ -182,8 +185,11 @@ else{
         users.push(obj)
         // set in local storage
         localStorage.setItem('users',JSON.stringify(users))
-        alert('you have signed up successfully')
-        navigate('/login')
+Swal.fire({
+  title: "You have sign up successfully!",
+  icon: "success",
+  draggable: true
+});        navigate('/login')
 
 }
       }
