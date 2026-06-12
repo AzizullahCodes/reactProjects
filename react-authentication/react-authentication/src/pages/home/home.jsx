@@ -29,7 +29,8 @@ import Swal from "sweetalert2";
 import "./home.css";
 
 const Home = () => {
-  let getData = JSON.parse(localStorage.getItem("user"));
+  let getData = JSON.parse(localStorage.getItem("users"));
+  let getObject = 
   const navigate = useNavigate("");
 
   // log out function

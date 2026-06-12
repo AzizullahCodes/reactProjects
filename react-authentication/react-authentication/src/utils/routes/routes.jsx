@@ -45,7 +45,7 @@ import PublicRoutes from "../public-routes/public-routes";
 import ProtectedRoutes from "../protected-routes/protected-routes";
 
 const AppRoutes = () => {
-  const isLoggedIn = localStorage.getItem("user");
+  const isLoggedIn = localStorage.getItem("users");
 
   return (
     <Routes>

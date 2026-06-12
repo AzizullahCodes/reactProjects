@@ -13,58 +13,39 @@ const LogIn = () => {
         password : ''
     });
     //formState handler function
-    const formStateHandler = ()=>{
-        if(formState.email == '' || formState.password == ''){
-            // alert('plz enter data')
-            Swal.fire("Plz enter your data!");
-            return
-        }
-        else{
-            let getData = localStorage.getItem('user')
-        if(getData){
-            let jsonData = JSON.parse(getData);
-            console.log(jsonData);
-            if(formState.email == jsonData.email && formState.password == jsonData.password){
-                // alert('you have logged in successfully')
-                Swal.fire({
-  title: "You have Logged In Successfuly!",
-  icon: "success",
-  draggable: true
-});
+    const formStateHandler = () => {
+  if (formState.email === '' || formState.password === '') {
+    Swal.fire('Please enter your data');
+    return;
+  }
 
-                navigate('/')
+  const getData = JSON.parse(localStorage.getItem('users')) || [];
+  const getObject = getData.find((item) => item.email === formState.email);
 
+  if (!getObject) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'No account found with this email. Sign up first!',
+    });
+    return;
+  }
 
-            }
-            else{
-                // alert('incorrect email or password, try again')
-                Swal.fire({
-  icon: "error",
-  title: "Oops...",
-  text: "You entered incorrect email or password, Try again!",
- 
-});
-
-            }
-        }
-        else(
-            // alert('you have not account signup first'),
-            Swal.fire({
-  icon: "error",
-  title: "Oops...",
-  text: "You have not account, sign up first!",
-  
-}),
-            navigate('/sign-up')
-        )
-        //clear inputs 
-        setFormState({
-            email : '',
-            password : ''
-        })
-        }
-
-    }
+  if (getObject.password === formState.password) {
+    Swal.fire({
+      title: 'You have Logged In Successfully!',
+      icon: 'success',
+      draggable: true,
+    });
+    navigate('/');
+  } else {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Incorrect password. Try again!',
+    });
+  }
+};
   return (
     <div className="login-container">
       <div className="login-card">
