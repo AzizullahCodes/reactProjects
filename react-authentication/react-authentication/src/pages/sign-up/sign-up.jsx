@@ -154,54 +154,96 @@ const SignUp = () => {
     });
     //formState handler function
     const formStateHandler = ()=>{
-if(
-    formState.name == '' || formState.email == '' || formState.password == ''
-){
-    // alert('plz enter data')
-    Swal.fire("Plz enter your data!");
-}
+      if(
+        formState.name == ''|| formState.email == '' || formState.password == ''
+      ){
+        Swal.fire("Plz enter your data!")
+
+      }
+      else{
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+      let isExisted = users.some((item)=>{
+        return(
+          item.email == formState.email
+        )
+      })
+      //apply condition
+      if(isExisted){
+        alert('user already existed with this email')
+        navigate('/login')
+      }
 else{
-    //first we see that if user is availale in localstorage if available we get/else we store it in localstorage
-let getUser = JSON.parse(localStorage.getItem('user'));
-if(getUser){
-    // alert('user already existed in local storage'); 
-    Swal.fire({
-  title: "user already existed!",
-  icon: "success",
-  draggable: true
-});
-    navigate('/login')
-    return
-}
-else{
-     //creating an object to storing in localstorage
+   //creating an object to storing in localstorage
         let obj = {
             name :formState.name,
             email : formState.email,
             password : formState.password
         }
-        console.log(obj)
-        // clear inputs 
-        setFormState({
-            name : '',
-            email: '',
-            password : ''
-        })
-//set in local storage 
-let stringifyObject = JSON.stringify(obj);
-localStorage.setItem('user',stringifyObject)
+        users.push(obj)
+        // set in local storage
+        localStorage.setItem('users',JSON.stringify(users))
+        alert('you have signed up successfully')
+        navigate('/login')
+
 }
-// alert('you have sign up successfuly')
-Swal.fire({
-  title: "You have sign up successfully!",
-  icon: "success",
-  draggable: true
-});
-navigate('/login')
+      }
+      // clearinputs 
+      setFormState({
+        name : '',
+        email : '',
+        password : ''
+      })
+    }
+// if(
+//     formState.name == '' || formState.email == '' || formState.password == ''
+// ){
+//     // alert('plz enter data')
+//     Swal.fire("Plz enter your data!");
+// }
+// else{
+//     //first we see that if user is availale in localstorage if available we get/else we store it in localstorage
+// let getUser = JSON.parse(localStorage.getItem('user'));
+// //some 
+// let isExisted = getUser
+// if(getUser){
+//     // alert('user already existed in local storage'); 
+//     Swal.fire({
+//   title: "user already existed!",
+//   icon: "success",
+//   draggable: true
+// });
+//     navigate('/login')
+//     return
+// }
+// else{
+    //  //creating an object to storing in localstorage
+    //     let obj = {
+    //         name :formState.name,
+    //         email : formState.email,
+    //         password : formState.password
+    //     }
+//         console.log(obj)
+//         // clear inputs 
+//         setFormState({
+//             name : '',
+//             email: '',
+//             password : ''
+//         })
+// //set in local storage 
+// let stringifyObject = JSON.stringify(obj);
+// localStorage.setItem('user',stringifyObject)
+// }
+// // alert('you have sign up successfuly')
+// Swal.fire({
+//   title: "You have sign up successfully!",
+//   icon: "success",
+//   draggable: true
+// });
+// navigate('/login')
 
        
-}
-    }
+// }
+//     }
        
   return (
     <div className="signup-container">
