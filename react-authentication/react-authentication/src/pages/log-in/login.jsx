@@ -16,7 +16,10 @@ const LogIn = () => {
     //formState handler function
     const formStateHandler = () => {
   if (formState.email === '' || formState.password === '') {
-    Swal.fire('Please enter your data');
+   Swal.fire({
+  title: "Please enter your data!",
+  icon: "warning",
+});
     return;
   }
 
@@ -29,6 +32,7 @@ const LogIn = () => {
       title: 'Oops...',
       text: 'No account found with this email. Sign up first!',
     });
+    setFormState({email: '',password : ''})
     return;
   }
 
@@ -37,18 +41,23 @@ const LogIn = () => {
       title: 'You have Logged In Successfully!',
       icon: 'success',
       draggable: true,
-    });
     
-    navigate('/');
+     
+    })
     //storing in local storage for accessing in homepage
     localStorage.setItem('loggedInUser',JSON.stringify(getObject))
+    navigate('/')
+    
+    
   } else {
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
       text: 'Incorrect password. Try again!',
+      
     });
   }
+  
 }
 //password handle funciton 
 const passwordHandler = () => {
