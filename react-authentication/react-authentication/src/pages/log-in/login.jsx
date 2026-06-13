@@ -1,5 +1,5 @@
 //login.jsx
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -7,6 +7,7 @@ import "./login.css";
 
 const LogIn = () => {
         const navigate = useNavigate();
+        const passRef = useRef(null)
     //formState
     const [formState,setFormState] = useState({
         email : '',
@@ -48,7 +49,15 @@ const LogIn = () => {
       text: 'Incorrect password. Try again!',
     });
   }
-};
+}
+//password handle funciton 
+const passwordHandler = () => {
+  if (passRef.current.type === "password") {
+    passRef.current.type = "text"
+  } else {
+    passRef.current.type = "password"
+  }
+}
   return (
     <div className="login-container">
       <div className="login-card">
@@ -94,8 +103,9 @@ const LogIn = () => {
                 password : e.target.value
             })
             }}
+            ref={passRef}
               />
-              <span>👁</span>
+              <span onClick={passwordHandler}>👁</span>
             </div>
           </div>
 
