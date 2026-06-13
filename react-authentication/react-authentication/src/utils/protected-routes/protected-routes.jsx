@@ -1,15 +1,23 @@
-//protected-routes.jsx
 import React from "react";
-import { Outlet,Navigate } from "react-router-dom";
-const ProtectedRoutes = ()=>{
-    const isDataExisted = localStorage.getItem('users')
-    const check = localStorage.getItem('loggedInUser');
+import { Outlet, Navigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
-    return(
-        // isDataExisted ? <Outlet/> : <Navigate to='/login' /> 
-        check ? <Outlet/> : <Navigate to='/login'/>
+const ProtectedRoutes = () => {
+  const check = localStorage.getItem('loggedInUser');
 
-    )
+  if (!check) {
+    Swal.fire({
+      title: 'Please login first!',
+      icon: 'warning',
+      timer: 1500,
+      showConfirmButton: false
+    });
+    return <Navigate to='/login' />;
+  }
 
+  return(
+     check ? <Outlet /> : <Navigate to='/login' />
+  )
 }
+
 export default ProtectedRoutes;
