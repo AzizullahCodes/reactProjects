@@ -64,6 +64,7 @@ const AppRoutes = () => {
         <Route path="/contact" element={<Contact />} />
       </Route>
 
+
       {/* ✅ CATCH-ALL ROUTE (IMPORTANT FIX) */}
       <Route
         path="*"
