@@ -45,7 +45,8 @@ import PublicRoutes from "../public-routes/public-routes";
 import ProtectedRoutes from "../protected-routes/protected-routes";
 
 const AppRoutes = () => {
-  const isLoggedIn = localStorage.getItem("users");
+  // const isLoggedIn = localStorage.getItem("users"); 
+  const check = localStorage.getItem('loggedInUser')
 
   return (
     <Routes>
@@ -67,7 +68,7 @@ const AppRoutes = () => {
       <Route
         path="*"
         element={
-          isLoggedIn ? (
+          check ? (
             <Navigate to="/" replace />
           ) : (
             <Navigate to="/login" replace />

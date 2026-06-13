@@ -3,9 +3,11 @@ import React from "react";
 import { Outlet,Navigate } from "react-router-dom";
 const ProtectedRoutes = ()=>{
     const isDataExisted = localStorage.getItem('users')
+    const check = localStorage.getItem('loggedInUser');
 
     return(
-        isDataExisted ? <Outlet/> : <Navigate to='/login' />
+        // isDataExisted ? <Outlet/> : <Navigate to='/login' /> 
+        check ? <Outlet/> : <Navigate to='/login'/>
 
     )
 

@@ -37,7 +37,10 @@ const LogIn = () => {
       icon: 'success',
       draggable: true,
     });
+    
     navigate('/');
+    //storing in local storage for accessing in homepage
+    localStorage.setItem('loggedInUser',JSON.stringify(getObject))
   } else {
     Swal.fire({
       icon: 'error',
