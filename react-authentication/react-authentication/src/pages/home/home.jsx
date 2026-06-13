@@ -1,5 +1,6 @@
 import React from "react";
 import Swal from 'sweetalert2'; 
+import './home.css';
 import { useNavigate } from "react-router-dom";
 const Home = ()=>{
   const navigate = useNavigate('')
@@ -39,12 +40,24 @@ const Home = ()=>{
  
   }
   return(
-    <>
-    <h1>Home page</h1>
-    <button onClick={logOutHandler}>log out</button>
-    <br/>
-    <button onClick={deleteAccountFun}>delete account</button>
-    </>
+    <div className="home-container">
+      <div className="home-card">
+        <h1 className="home-heading">Welcome Home</h1>
+        <p className="home-subtext">Manage your account settings below</p>
+        
+        <div className="button-group">
+          <button className="btn-logout" onClick={logOutHandler}>
+            Log Out
+          </button>
+          
+          <button className="btn-delete" onClick={deleteAccountFun}>
+            Delete Account
+          </button>
+        </div>
+      </div>
+    </div>
   )
 }
 export default Home;
+
+
