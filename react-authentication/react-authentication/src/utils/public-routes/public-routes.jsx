@@ -1,12 +1,11 @@
 //publicr-routes.jsx
-import React, { useEffect } from "react";
+import React from "react";
 import Swal from "sweetalert2";
 import { Outlet,Navigate } from "react-router-dom";
 const PublicRoutes = ()=>{
     const isDataExisted = localStorage.getItem('users')
     let check = localStorage.getItem('loggedInUser');
-    useEffect(()=>{
-        if (check) {
+    if (check) {
         Swal.fire({
           title: 'Please logout  first!',
           icon: 'warning',
@@ -15,7 +14,6 @@ const PublicRoutes = ()=>{
         });
         return <Navigate to='/' />;
       }
-    },[])
 
     return(
         // isDataExisted ? <Navigate to='/'/> : <Outlet/>  

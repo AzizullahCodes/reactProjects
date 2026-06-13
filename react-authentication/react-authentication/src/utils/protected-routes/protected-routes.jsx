@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Outlet, Navigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const ProtectedRoutes = () => {
   const check = localStorage.getItem('loggedInUser');
 
-  if (!check) {
+  useEffect(()=>{
+    if (!check) {
     Swal.fire({
       title: 'Please login first!',
       icon: 'warning',
@@ -14,6 +15,7 @@ const ProtectedRoutes = () => {
     });
     return <Navigate to='/login' />;
   }
+  },[])
 
   return(
      check ? <Outlet /> : <Navigate to='/login' />
