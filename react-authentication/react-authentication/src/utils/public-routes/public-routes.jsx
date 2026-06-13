@@ -5,15 +5,6 @@ import { Outlet,Navigate } from "react-router-dom";
 const PublicRoutes = ()=>{
     const isDataExisted = localStorage.getItem('users')
     let check = localStorage.getItem('loggedInUser');
-    if (check) {
-        Swal.fire({
-          title: 'Please logout  first!',
-          icon: 'warning',
-          timer: 1500,
-          showConfirmButton: false
-        });
-        return <Navigate to='/' />;
-      }
 
     return(
         // isDataExisted ? <Navigate to='/'/> : <Outlet/>  
