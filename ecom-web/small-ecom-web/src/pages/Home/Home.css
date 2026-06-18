@@ -1,0 +1,45 @@
+.home {
+  padding: 40px;
+  text-align: center;
+}
+
+.home h1 {
+  margin-bottom: 15px;
+}
+
+.home p {
+  margin-bottom: 30px;
+}
+
+.category-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+  gap: 20px;
+}
+
+.category-card {
+
+  background: #0d6efd;
+
+  color: white;
+
+  text-decoration: none;
+
+  padding: 60px 20px;
+
+  border-radius: 10px;
+
+  font-size: 20px;
+
+  font-weight: bold;
+
+  transition: 0.3s;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
