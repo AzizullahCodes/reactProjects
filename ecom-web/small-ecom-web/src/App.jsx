@@ -8,7 +8,8 @@ import Signup from "./pages/Signup/Signup";
 import Category from "./pages/Category/Category";
 import Cart from "./pages/Cart/Cart";
 
-import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+// import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute"; 
+import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 
 function App() {
 
