@@ -1,0 +1,50 @@
+
+body {
+  font-family: Arial;
+  margin: 0;
+  padding: 0;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background: #222;
+  color: white;
+}
+
+.nav input {
+  padding: 5px;
+}
+
+.links a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  padding: 10px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.btns button {
+  margin: 5px;
+}
+
+.product {
+  padding: 20px;
+}
+
+.cartItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
