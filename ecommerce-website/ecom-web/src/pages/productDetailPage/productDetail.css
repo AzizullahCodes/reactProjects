@@ -1,0 +1,60 @@
+.detail-container {
+  max-width: 1100px;
+  margin: 50px auto;
+  display: flex;
+  gap: 50px;
+  padding: 0 20px;
+}
+
+.detail-image {
+  flex: 1;
+}
+
+.detail-image img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.detail-info {
+  flex: 1;
+}
+
+.detail-info h1 {
+  margin-bottom: 10px;
+}
+
+.detail-brand {
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.detail-rating {
+  margin-bottom: 12px;
+}
+
+.detail-price {
+  margin-bottom: 20px;
+}
+
+.detail-add-btn {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.detail-view-cart {
+  text-decoration: none;
+  color: #7c3aed;
+  font-weight: 600;
+}
+
+.detail-not-found {
+  text-align: center;
+  margin-top: 80px;
+}
