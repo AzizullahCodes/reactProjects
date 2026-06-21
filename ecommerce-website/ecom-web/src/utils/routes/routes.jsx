@@ -14,6 +14,7 @@ import LaptopPage from "../../pages/laptop/laptop";
 import CameraPage from "../../pages/camera/camera";
 import SmartwatchesPage from "../../pages/smartwatch/smartwatch";
 import KeyboardPage from "../../pages/keyboard/keyboards";
+import CartPage from "../../components/cartpage/cartpage";
 // Route Guards
 import PublicRoutes from "../public-routes/public-routes";
 import ProtectedRoutes from "../protected-routes/protected-routes";
@@ -38,7 +39,7 @@ const AppRoutes = () => {
         <Route path="/keyboards" element={<KeyboardPage />} />
         <Route path="/camera" element={<CameraPage />} />
         <Route path="/smartwatch" element={<SmartwatchesPage />} />
-        <Route path="/cart" element={<CameraPage/>}/>
+        <Route path="/cart" element={<CartPage/>}/>
         <Route path="/product/:id" element={<ProductDetailPage />} />
       </Route>
 

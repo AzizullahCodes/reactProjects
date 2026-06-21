@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import allProducts from '../../data/allProducts';
+import allProducts from '../../data/combineData/combineData';
 import { useCart } from '../../components/cartContext/cartcontext';
 import './productDetail.css';
 
