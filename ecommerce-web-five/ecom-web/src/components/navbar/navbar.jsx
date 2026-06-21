@@ -2,11 +2,24 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../cartContext/cartcontext";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import "./navbar.css";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { cartCount } = useCart();
+  //logout handling functionality
+  const navigate = useNavigate();
+  const LogoutFunction = ()=>{
+    localStorage.removeItem('loggedInUser');
+     Swal.fire({
+      title: "you have been logged out!",
+      icon: "success",
+      draggable: true
+    })
+    navigate('/login')
+  }
 
   return (
     <nav className="navbar">
@@ -14,9 +27,23 @@ const Navbar = () => {
 
         {/* Logo */}
         <Link to="/" className="logo">
-          Auth<span>Flow</span>
+          Shop<span>Now</span>
         </Link>
+         <div className="search-group">
+    <select className="search-dropdown">
+      <option value="all">All</option>
+      <option value="category1">Category 1</option>
+      <option value="category2">Category 2</option>
+    </select>
 
+    <input 
+      type="text" 
+      placeholder="Search..." 
+      className="search-input"
+    />
+
+    <button className="search-btn">Search</button>
+  </div>
         {/* Hamburger */}
         <div
           className={`hamburger ${menuOpen ? "active" : ""}`}
@@ -32,20 +59,9 @@ const Navbar = () => {
           <li>
             <Link to="/">Home</Link>
           </li>
-
           
-
-          {/* Fixed: div ko li bana diya, ul ke andar div invalid hota hai */}
-          <li className="nav-buttons">
-            
-
-            <Link to="/login" className="login-btn">
-              Log In
-            </Link>
-
-            <Link to="/sign-up" className="signup-btn">
-              Sign Up
-            </Link>
+          <li>
+            <button onClick={LogoutFunction}>logout</button>
           </li>
         </ul>
 

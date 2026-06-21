@@ -6,7 +6,8 @@ import Swal from "sweetalert2";
 const ProtectedRoutes = () => {
   const check = localStorage.getItem('loggedInUser');
   return(
-     check ? <Outlet /> && <Navbar/> : <Navigate to='/login' />
+     check ? (<>
+      <Navbar/> <Outlet /></>) : <Navigate to='/login' />
   )
 }
 

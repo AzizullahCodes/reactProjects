@@ -26,6 +26,7 @@ const AppRoutes = () => {
 
       {/* PROTECTED ROUTES (only for logged users) */}
       <Route element={<ProtectedRoutes />}>
+      
         <Route path="/" element={<Home/>}/>
       </Route>
 
