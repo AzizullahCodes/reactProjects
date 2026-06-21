@@ -7,7 +7,7 @@ const App = ()=>{
   return(
     <CartProvider>
       <BrowserRouter>
-    <Navbar/>
+    {/* <Navbar/> */}
     <AppRoutes/>
     </BrowserRouter>
     </CartProvider>
