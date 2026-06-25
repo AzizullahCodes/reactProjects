@@ -1,39 +1,137 @@
+// import React, { useEffect, useState } from "react";
+// import mobileImage from './images/mobileImage.jfif';
+// import laptopImage from './images/laptopImage.jfif';
+// import smartwatchImage from './images/smartwatchImage.jfif';
+// import cameraImage from './images/cameraImage.jfif';
+// import keyboardImage from './images/keyboardImage.jfif';
+// // Initialization for ES Users
+// import { MDBCarousel, MDBCarouselItem } from 'mdb-react-ui-kit';
+// import allProduct from "../../webData/webData";
+
+// const Home = ()=>{
+//     const [data,setData] = useState(allProduct);
+//     useEffect(()=>{
+// console.log(data)
+//     },[])
+
+//     return(
+//         <>
+//       <MDBCarousel showControls>
+//       <MDBCarouselItem itemId={1}>
+//         <img src={laptopImage} className='d-block w-100' alt='...' />
+//       </MDBCarouselItem>
+//       <MDBCarouselItem itemId={2}>
+//         <img src={mobileImage} className='d-block w-100' alt='...' />
+//       </MDBCarouselItem>
+//       <MDBCarouselItem itemId={3}>
+//         <img src={smartwatchImage} className='d-block w-100' alt='...' />
+//       </MDBCarouselItem>
+//       <MDBCarouselItem itemId={4}>
+//         <img src={keyboardImage} className='d-block w-100' alt='...' />
+//       </MDBCarouselItem>
+//       <MDBCarouselItem itemId={5}>
+//         <img src={cameraImage} className='d-block w-100' alt='...' />
+//       </MDBCarouselItem>
+//     </MDBCarousel>
+//     <div>
+//         {
+//             data?.map((item,index)=>{
+//                 return(<li key={index}>{item.title}
+//                 {item.category}{item.brand}
+//                 <img src={item.image} alt={item.title}
+//                  />
+//                  <button>view detail</button>
+//                 </li>)
+//             })
+//         }
+//     </div>
+
+//         </>
+//     )
+// }
+// export default Home;
+
+
 import React, { useEffect, useState } from "react";
 import mobileImage from './images/mobileImage.jfif';
 import laptopImage from './images/laptopImage.jfif';
 import smartwatchImage from './images/smartwatchImage.jfif';
 import cameraImage from './images/cameraImage.jfif';
 import keyboardImage from './images/keyboardImage.jfif';
-// Initialization for ES Users
 import { MDBCarousel, MDBCarouselItem } from 'mdb-react-ui-kit';
 import allProduct from "../../webData/webData";
+import './Home.css';
 
-const Home = ()=>{
-    const [data,setData] = useState([allProduct]);
-    useEffect(()=>{
-console.log(data)
-    },[])
+const Home = () => {
+    const [data, setData] = useState(allProduct);
 
-    return(
+    useEffect(() => {
+        console.log(data)
+    }, [])
+
+    return (
         <>
-      <MDBCarousel showControls>
-      <MDBCarouselItem itemId={1}>
-        <img src={laptopImage} className='d-block w-100' alt='...' />
-      </MDBCarouselItem>
-      <MDBCarouselItem itemId={2}>
-        <img src={mobileImage} className='d-block w-100' alt='...' />
-      </MDBCarouselItem>
-      <MDBCarouselItem itemId={3}>
-        <img src={smartwatchImage} className='d-block w-100' alt='...' />
-      </MDBCarouselItem>
-      <MDBCarouselItem itemId={4}>
-        <img src={keyboardImage} className='d-block w-100' alt='...' />
-      </MDBCarouselItem>
-      <MDBCarouselItem itemId={5}>
-        <img src={cameraImage} className='d-block w-100' alt='...' />
-      </MDBCarouselItem>
-    </MDBCarousel>
+            <MDBCarousel showControls className="home-carousel">
+                <MDBCarouselItem itemId={1}>
+                    <img src={laptopImage} className='d-block w-100' alt='laptop banner' />
+                </MDBCarouselItem>
+                <MDBCarouselItem itemId={2}>
+                    <img src={mobileImage} className='d-block w-100' alt='mobile banner' />
+                </MDBCarouselItem>
+                <MDBCarouselItem itemId={3}>
+                    <img src={smartwatchImage} className='d-block w-100' alt='smartwatch banner' />
+                </MDBCarouselItem>
+                <MDBCarouselItem itemId={4}>
+                    <img src={keyboardImage} className='d-block w-100' alt='keyboard banner' />
+                </MDBCarouselItem>
+                <MDBCarouselItem itemId={5}>
+                    <img src={cameraImage} className='d-block w-100' alt='camera banner' />
+                </MDBCarouselItem>
+            </MDBCarousel>
 
+            <div className="home-container">
+                <h2 className="section-title">Trending Products</h2>
+
+                <div className="product-grid">
+                    {data?.map((item, index) => {
+                        return (
+                            <div className="product-card" key={item.id || index}>
+                                {item.discount && (
+                                    <span className="product-badge">-{item.discount}%</span>
+                                )}
+
+                                <div className="product-img-wrapper">
+                                    <img src={item.image} alt={item.title} className="product-img" />
+                                </div>
+
+                                <div className="product-info">
+                                    <span className="product-category">{item.category}</span>
+                                    <h3 className="product-title">{item.title}</h3>
+                                    <p className="product-brand">By {item.brand}</p>
+
+                                    <div className="product-rating">
+                                        <span className="stars">★★★★☆</span>
+                                        <span className="rating-count">(120)</span>
+                                    </div>
+
+                                    <div className="product-price-row">
+                                        <span className="product-price">
+                                            Rs. {item.price ? item.price : "N/A"}
+                                        </span>
+                                        {item.oldPrice && (
+                                            <span className="product-old-price">
+                                                Rs. {item.oldPrice}
+                                            </span>
+                                        )}
+                                    </div>
+
+                                    <button className="view-detail-btn">View Detail</button>
+                                </div>
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
         </>
     )
 }
