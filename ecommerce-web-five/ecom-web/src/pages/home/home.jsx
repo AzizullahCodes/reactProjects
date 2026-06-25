@@ -4,36 +4,36 @@ import laptopImage from './images/laptopImage.jfif';
 import smartwatchImage from './images/smartwatchImage.jfif';
 import cameraImage from './images/cameraImage.jfif';
 import keyboardImage from './images/keyboardImage.jfif';
+// Initialization for ES Users
+import { MDBCarousel, MDBCarouselItem } from 'mdb-react-ui-kit';
+import allProduct from "../../webData/webData";
+
 const Home = ()=>{
-    const allImages = [mobileImage,laptopImage,smartwatchImage,cameraImage,keyboardImage];
-    const [index,setIndex] = useState(0);
+    const [data,setData] = useState([allProduct]);
     useEffect(()=>{
+console.log(data)
+    },[])
 
-    let a = setInterval(() => {
-        setIndex(index + 1);
-        if(index == allImages.length - 1){
-            setIndex(0)
-        }
-      
-    }, 1000);
-   return()=>clearInterval(a)
-    },[index])
-        
-      
-
-    //  let a = 0;
-    //     setInterval(() => {
-    //         a++;
-    //          console.log(a)
-    //         if(a == 5){
-    //             a = 0
-    //         }
-            
-    //     }, 1000);
-       
     return(
         <>
-        <img src={allImages[index]} alt="" />
+      <MDBCarousel showControls>
+      <MDBCarouselItem itemId={1}>
+        <img src={laptopImage} className='d-block w-100' alt='...' />
+      </MDBCarouselItem>
+      <MDBCarouselItem itemId={2}>
+        <img src={mobileImage} className='d-block w-100' alt='...' />
+      </MDBCarouselItem>
+      <MDBCarouselItem itemId={3}>
+        <img src={smartwatchImage} className='d-block w-100' alt='...' />
+      </MDBCarouselItem>
+      <MDBCarouselItem itemId={4}>
+        <img src={keyboardImage} className='d-block w-100' alt='...' />
+      </MDBCarouselItem>
+      <MDBCarouselItem itemId={5}>
+        <img src={cameraImage} className='d-block w-100' alt='...' />
+      </MDBCarouselItem>
+    </MDBCarousel>
+
         </>
     )
 }
