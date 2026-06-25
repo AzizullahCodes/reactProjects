@@ -1,9 +1,89 @@
-/* ===== Container ===== */
+/* ================================
+   CAROUSEL / SLIDER
+================================= */
 .home-carousel {
     margin-bottom: 30px;
+    border-radius: 8px;
+    overflow: hidden;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
+.carousel-img {
+    width: 100%;
+    height: 120px !important;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* Carousel controls (prev/next arrows) customize */
+.home-carousel .carousel-control-prev-icon,
+.home-carousel .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    padding: 18px;
+    background-size: 50% 50%;
+}
+
+.home-carousel .carousel-control-prev,
+.home-carousel .carousel-control-next {
+    width: 8%;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.home-carousel .carousel-control-prev:hover,
+.home-carousel .carousel-control-next:hover {
+    opacity: 1;
+}
+
+/* Carousel indicators (dots) customize */
+.home-carousel .carousel-indicators {
+    margin-bottom: 10px;
+}
+
+.home-carousel .carousel-indicators [data-mdb-target] {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.6;
+    margin: 0 4px;
+}
+
+.home-carousel .carousel-indicators .active {
+    opacity: 1;
+    background-color: #ff9900;
+}
+
+/* Responsive carousel height */
+@media (max-width: 992px) {
+    .carousel-img {
+        height: 320px;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-img {
+        height: 250px;
+    }
+
+    .home-carousel .carousel-control-prev-icon,
+    .home-carousel .carousel-control-next-icon {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-img {
+        height: 180px;
+    }
+}
+
+/* ================================
+   HOME CONTAINER
+================================= */
 .home-container {
     max-width: 1280px;
     margin: 0 auto;
@@ -20,14 +100,18 @@
     padding-left: 12px;
 }
 
-/* ===== Grid Layout ===== */
+/* ================================
+   PRODUCT GRID
+================================= */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 18px;
 }
 
-/* ===== Product Card ===== */
+/* ================================
+   PRODUCT CARD
+================================= */
 .product-card {
     position: relative;
     background: #fff;
@@ -45,7 +129,7 @@
     border-color: #ddd;
 }
 
-/* ===== Badge ===== */
+/* Badge */
 .product-badge {
     position: absolute;
     top: 10px;
@@ -59,7 +143,7 @@
     z-index: 2;
 }
 
-/* ===== Image ===== */
+/* Image */
 .product-img-wrapper {
     width: 100%;
     height: 200px;
@@ -81,7 +165,7 @@
     transform: scale(1.08);
 }
 
-/* ===== Info Section ===== */
+/* Info Section */
 .product-info {
     padding: 14px 14px 16px;
     display: flex;
@@ -115,7 +199,7 @@
     margin: 0 0 6px;
 }
 
-/* ===== Rating ===== */
+/* Rating */
 .product-rating {
     display: flex;
     align-items: center;
@@ -134,7 +218,7 @@
     color: #888;
 }
 
-/* ===== Price ===== */
+/* Price */
 .product-price-row {
     display: flex;
     align-items: baseline;
@@ -154,7 +238,7 @@
     text-decoration: line-through;
 }
 
-/* ===== Button ===== */
+/* Button */
 .view-detail-btn {
     margin-top: auto;
     background: #ff9900;
@@ -172,7 +256,9 @@
     background: #e68a00;
 }
 
-/* ===== Responsive ===== */
+/* ================================
+   RESPONSIVE - PRODUCT GRID
+================================= */
 @media (max-width: 480px) {
     .product-grid {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
