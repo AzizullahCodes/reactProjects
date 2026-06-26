@@ -2,28 +2,30 @@
    CAROUSEL / SLIDER
 ================================= */
 .home-carousel {
-    margin-bottom: 30px;
-    border-radius: 8px;
+    max-width: 1100px;
+    margin: 24px auto;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
     position: relative;
 }
 
-.carousel-img {
+.home-carousel img {
     width: 100%;
-    height: 120px !important;
+    height: 280px;
     object-fit: cover;
-    object-position: center;
     display: block;
 }
 
-/* Carousel controls (prev/next arrows) customize */
+/* Carousel arrows — chote aur subtle */
 .home-carousel .carousel-control-prev-icon,
 .home-carousel .carousel-control-next-icon {
+    width: 32px;
+    height: 32px;
     background-color: rgba(0, 0, 0, 0.4);
     border-radius: 50%;
-    padding: 18px;
-    background-size: 50% 50%;
+    padding: 6px;
+    background-size: 50%;
 }
 
 .home-carousel .carousel-control-prev,
@@ -38,48 +40,66 @@
     opacity: 1;
 }
 
-/* Carousel indicators (dots) customize */
+/* Indicators (dots) — chote aur theme color */
 .home-carousel .carousel-indicators {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
-.home-carousel .carousel-indicators [data-mdb-target] {
-    width: 10px;
-    height: 10px;
+.home-carousel .carousel-indicators button {
+    width: 8px !important;
+    height: 8px !important;
     border-radius: 50%;
     background-color: #fff;
     opacity: 0.6;
-    margin: 0 4px;
+    margin: 0 4px !important;
+    border: none !important;
 }
 
 .home-carousel .carousel-indicators .active {
+    background-color: #e91e8c;
     opacity: 1;
-    background-color: #ff9900;
 }
 
-/* Responsive carousel height */
+/* Responsive sizing */
 @media (max-width: 992px) {
-    .carousel-img {
-        height: 320px;
+    .home-carousel {
+        margin: 16px auto;
+        border-radius: 12px;
+    }
+    .home-carousel img {
+        height: 220px;
     }
 }
 
-@media (max-width: 768px) {
-    .carousel-img {
-        height: 250px;
+@media (max-width: 600px) {
+    .home-carousel img {
+        height: 160px;
     }
-
     .home-carousel .carousel-control-prev-icon,
     .home-carousel .carousel-control-next-icon {
-        padding: 12px;
+        width: 24px;
+        height: 24px;
     }
+}
+.no-results {
+    width: 100%;
+    text-align: center;
+    padding: 60px 20px;
+    grid-column: 1 / -1; /* grid ke sare columns cover kare */
 }
 
-@media (max-width: 480px) {
-    .carousel-img {
-        height: 180px;
-    }
+.no-results-title {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 10px;
 }
+
+.no-results-hint {
+    font-size: 0.95rem;
+    color: #777;
+    margin-bottom: 20px;
+}
+
 
 /* ================================
    HOME CONTAINER

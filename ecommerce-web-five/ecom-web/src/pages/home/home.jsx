@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState, useContext } from "react";
 import mobileImage from './images/mobileImage.jfif';
 import laptopImage from './images/laptopImage.jfif';
@@ -10,27 +8,28 @@ import { MDBCarousel, MDBCarouselItem } from 'mdb-react-ui-kit';
 import allProduct from "../../webData/webData";
 import './Home.css';
 import SearchContext from "../../context/searchContext/searchContext";
+
 const Home = () => {
     const [data, setData] = useState(allProduct);
-    const {searchTerm} = useContext(SearchContext)
-    
-    useEffect(()=>{
-        if(!searchTerm){
+    const { searchTerm, setSearchTerm } = useContext(SearchContext);
+
+    useEffect(() => {
+        if (!searchTerm) {
             setData(allProduct);
-            return
-        }
-        else{
-            let filtered = allProduct.filter((item)=>{
-                return (item.category.toLowerCase().includes(searchTerm.toLowerCase()))
-            })
-            setData(filtered)
+            return;
         }
 
-    },[searchTerm])
+        const filtered = allProduct.filter((item) =>
+            item.category.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+
+        setData(filtered);
+    }, [searchTerm]);
 
     return (
         <>
-            <MDBCarousel showControls className="home-carousel">
+           {
+            !searchTerm && ( <MDBCarousel showControls className="home-carousel">
                 <MDBCarouselItem itemId={1}>
                     <img src={laptopImage} className='d-block w-100' alt='laptop banner' />
                 </MDBCarouselItem>
@@ -46,14 +45,15 @@ const Home = () => {
                 <MDBCarouselItem itemId={5}>
                     <img src={cameraImage} className='d-block w-100' alt='camera banner' />
                 </MDBCarouselItem>
-            </MDBCarousel>
+            </MDBCarousel>)
+           }
 
             <div className="home-container">
                 <h2 className="section-title">Trending Products</h2>
 
                 <div className="product-grid">
-                    {data?.map((item, index) => {
-                        return (
+                    {data?.length > 0 ? (
+                        data.map((item, index) => (
                             <div className="product-card" key={item.id || index}>
                                 {item.discount && (
                                     <span className="product-badge">-{item.discount}%</span>
@@ -87,11 +87,22 @@ const Home = () => {
                                     <button className="view-detail-btn">View Detail</button>
                                 </div>
                             </div>
-                        )
-                    })}
+                        ))
+                    ) : (
+                        <div className="no-results">
+                            <h3 className="no-results-title">
+                                No products found for "{searchTerm}"
+                            </h3>
+                            <p className="no-results-hint">
+                                Try checking your spelling, or search with a different keyword.
+                            </p>
+                           
+                        </div>
+                    )}
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
+
 export default Home;
