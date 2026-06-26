@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import './Home.css';
 import SearchContext from "../../context/searchContext/searchContext";
 
+
 const Home = () => {
     const [data, setData] = useState(allProduct);
     const { searchTerm, setSearchTerm } = useContext(SearchContext);
@@ -66,9 +67,9 @@ const viewUserHandler = (requiredItem)=>{
             <div className="home-container">
                 <h2 className="section-title">Trending Products</h2>
 
-                <div className="product-grid">
-                    {data?.length > 0 ? (
-                        data.map((item, index) => (
+                {data?.length > 0 ? (
+                    <div className="product-grid">
+                        {data.map((item, index) => (
                             <div className="product-card" key={item.id || index}>
                                 {item.discount && (
                                     <span className="product-badge">-{item.discount}%</span>
@@ -102,31 +103,31 @@ const viewUserHandler = (requiredItem)=>{
                                     <button className="view-detail-btn" onClick={()=>viewUserHandler(item)}>View Detail</button>
                                 </div>
                             </div>
-                        ))
-                    ) : (
-                        <div className="no-results-wrapper">
-    <div className="no-results">
-        <div className="no-results-icon">
-            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <circle cx="11" cy="11" r="7" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                <line x1="8.5" y1="8.5" x2="13.5" y2="13.5" />
-                <line x1="13.5" y1="8.5" x2="8.5" y2="13.5" />
-            </svg>
-        </div>
-        <h3 className="no-results-title">
-            No products found for "<span className="search-term">{searchTerm}</span>"
-        </h3>
-        <p className="no-results-hint">
-            Try checking your spelling, or search with a different keyword.
-        </p>
-        <button className="no-results-clear-btn" onClick={() => setSearchTerm("")}>
-            Clear Search
-        </button>
-    </div>
-</div>
-                    )}
-                </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div className="no-results-wrapper">
+                        <div className="no-results">
+                            <div className="no-results-icon">
+                                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                    <circle cx="11" cy="11" r="7" />
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                                    <line x1="8.5" y1="8.5" x2="13.5" y2="13.5" />
+                                    <line x1="13.5" y1="8.5" x2="8.5" y2="13.5" />
+                                </svg>
+                            </div>
+                            <h3 className="no-results-title">
+                                No products found for "<span className="search-term">{searchTerm}</span>"
+                            </h3>
+                            <p className="no-results-hint">
+                                Try checking your spelling, or search with a different keyword.
+                            </p>
+                            <button className="no-results-clear-btn" onClick={() => setSearchTerm("")}>
+                                Clear Search
+                            </button>
+                        </div>
+                    </div>
+                )}
             </div>
         </>
     );
