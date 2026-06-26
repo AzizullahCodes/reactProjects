@@ -24,6 +24,14 @@ const Home = () => {
         );
 
         setData(filtered);
+        if(filtered.length == 0){
+           let filt =  setTimeout(() => {
+                setSearchTerm('')
+                
+            }, 2000);
+            //clear interval 
+            return ()=> clearTimeout(filt)
+        }
     }, [searchTerm]);
 
     return (
