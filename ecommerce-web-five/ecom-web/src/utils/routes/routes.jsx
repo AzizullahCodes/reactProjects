@@ -7,6 +7,7 @@ import SignUp from "../../pages/sign-up/sign-up";
 import LogIn from "../../pages/log-in/login";
 import Home from "../../pages/home/home";
 import ProductDetailPage from "../../pages/productDetail/productDetailPage";
+import CartPage from "../../components/cartpage/cartpage";
 // Route Guards
 import PublicRoutes from "../public-routes/public-routes";
 import ProtectedRoutes from "../protected-routes/protected-routes";
@@ -29,6 +30,7 @@ const AppRoutes = () => {
       
         <Route path="/" element={<Home/>}/>
         <Route path="/productDetailPage/:uid" element={<ProductDetailPage/>}/>
+        <Route path="/cartpage" element={<CartPage/>}/>
       </Route>
 
 

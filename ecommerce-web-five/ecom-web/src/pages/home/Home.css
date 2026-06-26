@@ -81,24 +81,6 @@
         height: 24px;
     }
 }
-.no-results {
-    width: 100%;
-    text-align: center;
-    padding: 60px 20px;
-    grid-column: 1 / -1; /* grid ke sare columns cover kare */
-}
-
-.no-results-title {
-    font-size: 1.4rem;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.no-results-hint {
-    font-size: 0.95rem;
-    color: #777;
-    margin-bottom: 20px;
-}
 
 
 /* ================================
@@ -275,7 +257,118 @@
 .view-detail-btn:hover {
     background: #e68a00;
 }
+.no-results-wrapper {
+    width: 100%;
+    min-height: calc(100vh - 200px); /* navbar+footer height adjust kar lo agar zarurat ho */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+}
 
+.no-results {
+    text-align: center;
+    max-width: 840px;
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #ececec;
+    border-radius: 20px;
+    padding: 56px 40px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    animation: noResultsFadeIn 0.4s ease-out;
+}
+
+.no-results-icon {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #fff3e8, #ffe9d6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e47911;
+}
+
+.no-results-icon svg {
+    width: 44px;
+    height: 44px;
+}
+
+.no-results-title {
+    font-size: 19px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 10px;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.search-term {
+    color: #e47911;
+    font-weight: 700;
+}
+
+.no-results-hint {
+    font-size: 14.5px;
+    color: #888;
+    line-height: 1.6;
+    margin: 0 0 28px;
+}
+
+.no-results-clear-btn {
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 32px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.no-results-clear-btn:hover {
+    background: #e47911;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(228, 121, 17, 0.3);
+}
+
+.no-results-clear-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+@keyframes noResultsFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 480px) {
+    .no-results {
+        padding: 40px 24px;
+        border-radius: 16px;
+    }
+    .no-results-icon {
+        width: 76px;
+        height: 76px;
+    }
+    .no-results-icon svg {
+        width: 34px;
+        height: 34px;
+    }
+    .no-results-title {
+        font-size: 17px;
+    }
+}
 /* ================================
    RESPONSIVE - PRODUCT GRID
 ================================= */
