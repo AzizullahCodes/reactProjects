@@ -1,41 +1,3 @@
-// import React from 'react'
-// import { useParams,useNavigate } from 'react-router-dom'
-// import allProduct from '../../webData/webData'
-
-// const ProductDetailPage = () => {
-//     const navigation = useNavigate()
-//     const {uid} = useParams()
-//     //required product geting
-//     let requiredProduct = allProduct?.find((item)=>{
-//         return(item.id == uid)
-//     })
-//     console.log(requiredProduct)
-//   return (
-//     <div>
-//         <h1>product detial page</h1>
-//         <h1>{uid}</h1>
-//         <div>
-//             <div>
-//                 <img src={requiredProduct.image} alt="" />
-//             </div>
-//             <p> Catagory : {requiredProduct.category}</p>
-//             <p> Brand : {requiredProduct.brand}</p>
-//             <p>Lens : {requiredProduct.lens}</p>
-//             <p>Resolution : {requiredProduct.resolution}</p>
-//             <p>Price : {requiredProduct.price}</p>
-//             <p>Rating : {requiredProduct.rating}</p>
-//             <p>Title : {requiredProduct.title}</p>
-//             <p>Type : {requiredProduct.type}</p>
-//             <button onClick={()=>navigation('/')}>Go Home</button><br/>
-//             <button>Add to Cart</button>
-//         </div>
-//     </div>
-//   )
-// }
-
-// export default ProductDetailPage;
-
-
 import React from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import allProduct from '../../webData/webData'
@@ -45,13 +7,11 @@ const ProductDetailPage = () => {
     const navigation = useNavigate()
     const { uid } = useParams()
 
-    // required product geting
     let requiredProduct = allProduct?.find((item) => {
         return (item.id == uid)
     })
-    console.log(requiredProduct)
+    // console.log(requiredProduct)
 
-    // safety check — agar product na mile (galat id), crash na ho
     if (!requiredProduct) {
         return (
             <div className="product-not-found">
@@ -60,17 +20,15 @@ const ProductDetailPage = () => {
             </div>
         )
     }
-
+// console.log(requiredProduct)
     return (
         <div className="product-detail-page">
             <div className="product-detail-container">
 
-                {/* Image section */}
                 <div className="product-detail-img-wrapper">
                     <img src={requiredProduct.image} alt={requiredProduct.title} className="product-detail-img" />
                 </div>
 
-                {/* Info section */}
                 <div className="product-detail-info">
                     <span className="product-detail-category">{requiredProduct.category}</span>
                     <h1 className="product-detail-title">{requiredProduct.title}</h1>
@@ -78,7 +36,7 @@ const ProductDetailPage = () => {
 
                     <div className="product-detail-rating">
                         <span className="stars">★★★★☆</span>
-                        <span className="rating-value">{requiredProduct.rating}</span>
+                        <span className="rating-value">{requiredProduct.rating || "N/A"}</span>
                     </div>
 
                     <div className="product-detail-price">
@@ -88,15 +46,15 @@ const ProductDetailPage = () => {
                     <div className="product-detail-specs">
                         <div className="spec-row">
                             <span className="spec-label">Type</span>
-                            <span className="spec-value">{requiredProduct.type}</span>
+                            <span className="spec-value">{requiredProduct.type || "N/A"}</span>
                         </div>
                         <div className="spec-row">
                             <span className="spec-label">Lens</span>
-                            <span className="spec-value">{requiredProduct.lens}</span>
+                            <span className="spec-value">{requiredProduct.lens || "N/A"}</span>
                         </div>
                         <div className="spec-row">
                             <span className="spec-label">Resolution</span>
-                            <span className="spec-value">{requiredProduct.resolution}</span>
+                            <span className="spec-value">{requiredProduct.resolution || "N/A"}</span>
                         </div>
                     </div>
 
