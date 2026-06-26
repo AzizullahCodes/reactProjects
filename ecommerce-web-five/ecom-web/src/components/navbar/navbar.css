@@ -322,10 +322,10 @@
   }
 
   /* Target text items cleanly without completely hiding the working cart container */
-  .nav-right .nav-item-link,
+   .nav-right .nav-item-link,
   .nav-right .logout-btn {
-    display: none; 
-  }
+    display: none;  
+   } 
 
   /* CRITICAL FIX: Make sure the cart stays visible if scale checks match mobile rules */
   .nav-right .cart-link {
