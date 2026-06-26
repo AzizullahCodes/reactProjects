@@ -63,7 +63,7 @@ const ProductDetailPage = () => {
                     <div className="product-detail-actions">
                         <button className="add-to-cart-btn" onClick={()=>cartFun(requiredProduct)}>Add to Cart</button>
                         <button className="go-home-btn" onClick={() => navigation('/')}>
-                            Go Home
+                            Continue Shopping
                         </button>
                     </div>
                 </div>

@@ -1,10 +1,15 @@
 import React, { useContext } from "react";
 import cartContext from "../../context/cartContext/cartContext";
+import { useNavigate } from "react-router-dom";
 import "./CartPage.css";
 
 const CartPage = () => {
-    const { cart, removeFromCart, increaseQty, decreaseQty, cartTotal } =
-        useContext(cartContext);
+    const { cart, removeFromCart, increaseQty, decreaseQty, cartTotal } = useContext(cartContext);
+    const navigation = useNavigate()
+//navigation function
+const navigationHandler = ()=>{
+  navigation('/')
+}
 
     // agar cart khaali hai
     if (cart.length === 0) {
@@ -18,7 +23,7 @@ const CartPage = () => {
                     </svg>
                     <h2>Your cart is empty</h2>
                     <p>Looks like you haven't added anything yet.</p>
-                    <button className="continue-btn">Continue Shopping</button>
+                    <button className="continue-btn" onClick={navigationHandler}>Continue Shopping</button>
                 </div>
             </div>
         );
@@ -96,7 +101,7 @@ const CartPage = () => {
                         <span>Rs. {cartTotal}</span>
                     </div>
 
-                    <button className="checkout-btn">Proceed to Checkout</button>
+                    <button className="checkout-btn" onClick={navigationHandler}>More Shopping</button>
                 </div>
             </div>
         </div>
