@@ -6,12 +6,14 @@ import cameraImage from './images/cameraImage.jfif';
 import keyboardImage from './images/keyboardImage.jfif';
 import { MDBCarousel, MDBCarouselItem } from 'mdb-react-ui-kit';
 import allProduct from "../../webData/webData";
+import { useNavigate } from "react-router-dom";
 import './Home.css';
 import SearchContext from "../../context/searchContext/searchContext";
 
 const Home = () => {
     const [data, setData] = useState(allProduct);
     const { searchTerm, setSearchTerm } = useContext(SearchContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (!searchTerm) {
@@ -33,7 +35,12 @@ const Home = () => {
             return ()=> clearTimeout(filt)
         }
     }, [searchTerm]);
+//viewUser Handler function
+const viewUserHandler = (requiredItem)=>{
+    console.log(requiredItem)
+    navigate(`/productDetailPage/${requiredItem.id}`)
 
+}
     return (
         <>
            {
@@ -92,7 +99,7 @@ const Home = () => {
                                         )}
                                     </div>
 
-                                    <button className="view-detail-btn">View Detail</button>
+                                    <button className="view-detail-btn" onClick={()=>viewUserHandler(item)}>View Detail</button>
                                 </div>
                             </div>
                         ))

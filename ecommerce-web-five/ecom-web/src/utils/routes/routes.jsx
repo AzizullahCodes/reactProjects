@@ -6,7 +6,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import SignUp from "../../pages/sign-up/sign-up";
 import LogIn from "../../pages/log-in/login";
 import Home from "../../pages/home/home";
-
+import ProductDetailPage from "../../pages/productDetail/productDetailPage";
 // Route Guards
 import PublicRoutes from "../public-routes/public-routes";
 import ProtectedRoutes from "../protected-routes/protected-routes";
@@ -28,6 +28,7 @@ const AppRoutes = () => {
       <Route element={<ProtectedRoutes />}>
       
         <Route path="/" element={<Home/>}/>
+        <Route path="/productDetailPage/:uid" element={<ProductDetailPage/>}/>
       </Route>
 
 
