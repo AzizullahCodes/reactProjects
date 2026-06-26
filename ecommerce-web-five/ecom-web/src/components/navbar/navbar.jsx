@@ -13,7 +13,18 @@ const Navbar = () => {
   const [inputValue,setInputValue] = useState('')
   //handle search 
   const handleSearch = ()=>{
-    setSearchTerm(inputValue)
+    if(inputValue == ''){
+      Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: "Enter required data you want to search like mobile,keyboard etc!",
+
+});
+    }
+    else{
+      setSearchTerm(inputValue)
+    }
+    setInputValue('')
   }
   const navigate = useNavigate();
   const LogoutFunction = ()=>{
