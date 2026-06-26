@@ -97,7 +97,7 @@ const Navbar = () => {
       <div className={`mobile-nav-links ${menuOpen ? "show" : ""}`}>
         <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
         <Link to="/cartpage" onClick={() => setMenuOpen(false)}>
-          Cart {cartCount > 0 && `(${cartCount})`}
+          Cart {cart.length > 0 && `(${cart.length})`}
         </Link>
         <button onClick={() => { LogoutFunction(); setMenuOpen(false); }} className="mobile-logout">
           Logout
