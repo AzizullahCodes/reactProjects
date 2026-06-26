@@ -1,58 +1,6 @@
-// import React, { useEffect, useState } from "react";
-// import mobileImage from './images/mobileImage.jfif';
-// import laptopImage from './images/laptopImage.jfif';
-// import smartwatchImage from './images/smartwatchImage.jfif';
-// import cameraImage from './images/cameraImage.jfif';
-// import keyboardImage from './images/keyboardImage.jfif';
-// // Initialization for ES Users
-// import { MDBCarousel, MDBCarouselItem } from 'mdb-react-ui-kit';
-// import allProduct from "../../webData/webData";
-
-// const Home = ()=>{
-//     const [data,setData] = useState(allProduct);
-//     useEffect(()=>{
-// console.log(data)
-//     },[])
-
-//     return(
-//         <>
-//       <MDBCarousel showControls>
-//       <MDBCarouselItem itemId={1}>
-//         <img src={laptopImage} className='d-block w-100' alt='...' />
-//       </MDBCarouselItem>
-//       <MDBCarouselItem itemId={2}>
-//         <img src={mobileImage} className='d-block w-100' alt='...' />
-//       </MDBCarouselItem>
-//       <MDBCarouselItem itemId={3}>
-//         <img src={smartwatchImage} className='d-block w-100' alt='...' />
-//       </MDBCarouselItem>
-//       <MDBCarouselItem itemId={4}>
-//         <img src={keyboardImage} className='d-block w-100' alt='...' />
-//       </MDBCarouselItem>
-//       <MDBCarouselItem itemId={5}>
-//         <img src={cameraImage} className='d-block w-100' alt='...' />
-//       </MDBCarouselItem>
-//     </MDBCarousel>
-//     <div>
-//         {
-//             data?.map((item,index)=>{
-//                 return(<li key={index}>{item.title}
-//                 {item.category}{item.brand}
-//                 <img src={item.image} alt={item.title}
-//                  />
-//                  <button>view detail</button>
-//                 </li>)
-//             })
-//         }
-//     </div>
-
-//         </>
-//     )
-// }
-// export default Home;
 
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import mobileImage from './images/mobileImage.jfif';
 import laptopImage from './images/laptopImage.jfif';
 import smartwatchImage from './images/smartwatchImage.jfif';
@@ -61,13 +9,24 @@ import keyboardImage from './images/keyboardImage.jfif';
 import { MDBCarousel, MDBCarouselItem } from 'mdb-react-ui-kit';
 import allProduct from "../../webData/webData";
 import './Home.css';
-
+import SearchContext from "../../context/searchContext/searchContext";
 const Home = () => {
     const [data, setData] = useState(allProduct);
+    const {searchTerm} = useContext(SearchContext)
+    
+    useEffect(()=>{
+        if(!searchTerm){
+            setData(allProduct);
+            return
+        }
+        else{
+            let filtered = allProduct.filter((item)=>{
+                return (item.category.toLowerCase().includes(searchTerm.toLowerCase()))
+            })
+            setData(filtered)
+        }
 
-    useEffect(() => {
-        console.log(data)
-    }, [])
+    },[searchTerm])
 
     return (
         <>

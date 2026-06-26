@@ -1,15 +1,20 @@
 
-import React, { useState } from "react";
+import React, { useState ,useContext } from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "../cartContext/cartcontext";
+import SearchContext from "../../context/searchContext/searchContext";
+// import { useCart } from "../cartContext/cartcontext";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "./navbar.css";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { cartCount } = useCart();
-  //logout handling functionality
+  const {searchTerm,setSearchTerm} = useContext(SearchContext)
+  const [inputValue,setInputValue] = useState('')
+  //handle search 
+  const handleSearch = ()=>{
+    setSearchTerm(inputValue)
+  }
   const navigate = useNavigate();
   const LogoutFunction = ()=>{
     localStorage.removeItem('loggedInUser');
@@ -40,9 +45,11 @@ const Navbar = () => {
       type="text" 
       placeholder="Search..." 
       className="search-input"
+      value={inputValue}
+      onChange={(e)=>setInputValue(e.target.value)}
     />
 
-    <button className="search-btn">Search</button>
+    <button className="search-btn" onClick={handleSearch}>Search</button>
   </div>
         {/* Hamburger */}
         <div
