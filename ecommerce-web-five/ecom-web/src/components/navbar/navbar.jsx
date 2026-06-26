@@ -52,18 +52,12 @@ const Navbar = () => {
         {/* CENTER: Search Bar (Daraz Style) */}
         <div className="nav-center">
           <div className="search-group">
-            <select className="search-dropdown">
-              <option value="all">All</option>
-              <option value="category1">Category 1</option>
-              <option value="category2">Category 2</option>
-            </select>
             <input
               type="text"
               placeholder="Search in ShopNow..."
               className="search-input"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && handleSearch()}
             />
             <button className="search-btn" onClick={handleSearch}>
               <span className="search-icon-desktop">🔍</span>
