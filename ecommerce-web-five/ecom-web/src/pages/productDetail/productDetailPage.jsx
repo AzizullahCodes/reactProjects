@@ -1,11 +1,13 @@
-import React from 'react'
+import { React, useContext} from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import allProduct from '../../webData/webData'
+import cartContext from '../../context/cartContext/cartContext'
 import './ProductDetailPage.css'
 
 const ProductDetailPage = () => {
     const navigation = useNavigate()
     const { uid } = useParams()
+    const {cartFun} = useContext(cartContext)
 
     let requiredProduct = allProduct?.find((item) => {
         return (item.id == uid)
@@ -59,7 +61,7 @@ const ProductDetailPage = () => {
                     </div>
 
                     <div className="product-detail-actions">
-                        <button className="add-to-cart-btn">Add to Cart</button>
+                        <button className="add-to-cart-btn" onClick={()=>cartFun(requiredProduct)}>Add to Cart</button>
                         <button className="go-home-btn" onClick={() => navigation('/')}>
                             Go Home
                         </button>

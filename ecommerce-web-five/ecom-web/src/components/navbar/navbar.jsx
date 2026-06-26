@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SearchContext from "../../context/searchContext/searchContext";
-// import { useCart } from "../cartContext/cartcontext";
+import cartContext from "../../context/cartContext/cartContext";
 import Swal from "sweetalert2";
 import "./navbar.css";
 
@@ -9,6 +9,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { searchTerm, setSearchTerm } = useContext(SearchContext);
   const [inputValue, setInputValue] = useState('');
+  const {cart} = useContext(cartContext)
   // const { cartCount } = useCart(); // Un-comment this when your context is ready
   const cartCount = 3; // Temporary placeholder for design preview
   const navigate = useNavigate();
@@ -76,7 +77,7 @@ const Navbar = () => {
           <Link to="/cart" className="cart-link">
             <div className="cart-icon-wrapper">
               <span className="cart-icon">🛒</span>
-              {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+              {cart.length > 0 && <span className="cart-badge">{cart.length}</span>}
             </div>
           </Link>
 
