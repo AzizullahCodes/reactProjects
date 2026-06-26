@@ -96,7 +96,7 @@ const Navbar = () => {
       {/* MOBILE DROPDOWN DRAWER */}
       <div className={`mobile-nav-links ${menuOpen ? "show" : ""}`}>
         <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
-        <Link to="/cart" onClick={() => setMenuOpen(false)}>
+        <Link to="/cartpage" onClick={() => setMenuOpen(false)}>
           Cart {cartCount > 0 && `(${cartCount})`}
         </Link>
         <button onClick={() => { LogoutFunction(); setMenuOpen(false); }} className="mobile-logout">

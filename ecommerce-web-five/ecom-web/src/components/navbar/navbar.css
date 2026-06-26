@@ -150,7 +150,7 @@
   align-items: center;
   justify-content: center;
   background: var(--bg-hover);
-  border-radius: 50%;
+  border-radius: 50px;
   width: 40px;
   height: 40px;
   transition: var(--transition);
@@ -291,18 +291,18 @@
 }
 
 /* ==========================================================================
-   RESPONSIVE BREAKPOINTS (Optimized Column Stacking)
+   RESPONSIVE BREAKPOINTS (Now Completely Stacked in Mobile)
    ========================================================================== */
 @media (max-width: 768px) {
   .nav-container {
-    flex-direction: column; 
-    align-items: stretch;   
-    gap: 1rem;           
-    padding: 1.25rem 1.5rem;
+    flex-direction: column; /* Force Left, Center, and Right into a Column */
+    align-items: stretch;   /* Allow children to fill width layout naturally */
+    gap: 0.75rem;           /* Tighter spacing for mobile stacks */
+    padding: 1rem 1.5rem;
   }
 
   .nav-left {
-    justify-content: center; 
+    justify-content: center; /* Center the Logo on mobile */
     flex: none;
   }
 
@@ -312,29 +312,22 @@
     width: 100%;
   }
 
-  /* This row organizes the Hamburger and Cart side-by-side inside the column layout */
   .nav-right {
-    justify-content: center; 
-    align-items: center;
+    justify-content: center; /* Center your mobile items/hamburger menu row */
     flex: none;
     width: 100%;
-    gap: 1.5rem;
   }
 
-  /* Target text items cleanly without completely hiding the working cart container */
-   .nav-right .nav-item-link,
+  /* Keep your mobile logic hide/show setup working seamlessly */
+  .nav-right .nav-item-link,
+  .nav-right .cart-link,
   .nav-right .logout-btn {
-    display: none;  
-   } 
-
-  /* CRITICAL FIX: Make sure the cart stays visible if scale checks match mobile rules */
-  .nav-right .cart-link {
-    display: flex !important;
+    display: none; 
   }
 
   .hamburger {
     display: flex; 
-    margin: 0;
+    margin: 0 auto; /* Center alignment for the hamburger icon if needed */
   }
 
   .mobile-nav-links {
