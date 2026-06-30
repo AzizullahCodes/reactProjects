@@ -24,6 +24,8 @@ const AppRoutes = () => {
       <Route element={<PublicRoutes />}>
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
+        <Route path="*" element={<LogIn/>}/>
+        
       </Route>
 
       {/* PROTECTED ROUTES (only for logged users) */}
@@ -31,10 +33,12 @@ const AppRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<Home/>}/>
+     
       </Route>
 
 
-      {/* ✅ CATCH-ALL ROUTE (IMPORTANT FIX) */}
+      {/* ✅ CATCH-ALL ROUTE (IMPORTANT FIX)
       <Route
         path="*"
         element={
@@ -43,8 +47,8 @@ const AppRoutes = () => {
           ) : (
             <Navigate to="/login" replace />
           )
-        }
-      />
+        } */}
+      {/* /> */}
 
     </Routes>
   );
