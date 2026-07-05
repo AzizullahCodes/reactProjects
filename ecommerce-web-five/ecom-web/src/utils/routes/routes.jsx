@@ -11,6 +11,8 @@ import CartPage from "../../components/cartpage/cartpage";
 // Route Guards
 import PublicRoutes from "../public-routes/public-routes";
 import ProtectedRoutes from "../protected-routes/protected-routes";
+import CheckoutPage from "../../pages/checkoutPage/checkoutPage";
+import OrderSuccess from "../../pages/orderSuccessPage/orderSuccessPage";
 
 const AppRoutes = () => {
   // const isLoggedIn = localStorage.getItem("users"); 
@@ -31,6 +33,8 @@ const AppRoutes = () => {
         <Route path="/" element={<Home/>}/>
         <Route path="/productDetailPage/:uid" element={<ProductDetailPage/>}/>
         <Route path="/cartpage" element={<CartPage/>}/>
+        <Route path="/checkoutPage" element={<CheckoutPage/>}/>
+        <Route path="/orderSuccessPage" element={<OrderSuccess/>}/>
       </Route>
 
 

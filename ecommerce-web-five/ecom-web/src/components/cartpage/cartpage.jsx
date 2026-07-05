@@ -102,6 +102,9 @@ const navigationHandler = ()=>{
                     </div>
 
                     <button className="checkout-btn" onClick={navigationHandler}>More Shopping</button>
+                    <button className="checkout-btn" onClick={() => navigation('/checkoutPage')}>
+    Proceed to Checkout
+</button>
                 </div>
             </div>
         </div>
