@@ -62,6 +62,11 @@ const AddToCart = ({ children }) => {
         );
     };
 
+    // poora cart empty kar dega (checkout/order place hone ke baad use hota hai)
+    const clearCart = () => {
+        setCart([]);
+    };
+
     // total items count (badge ke liye)
     const cartCount = cart.reduce((total, item) => total + item.qty, 0);
 
@@ -81,6 +86,7 @@ const AddToCart = ({ children }) => {
                 decreaseQty,
                 cartCount,
                 cartTotal,
+                clearCart,
             }}
         >
             {children}
