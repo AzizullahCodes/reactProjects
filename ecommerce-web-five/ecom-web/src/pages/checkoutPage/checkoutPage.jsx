@@ -1,9 +1,10 @@
+
+
 // import React, { useContext, useState } from "react";
 // import cartContext from "../../context/cartContext/cartContext";
 // import { useNavigate } from "react-router-dom";
 // import Swal from "sweetalert2";
 // import "./checkoutPage.css";
-
 
 // const CheckoutPage = () => {
 //     const { cart, cartTotal, clearCart } = useContext(cartContext);
@@ -40,7 +41,8 @@
 //         e.preventDefault();
 
 //         // simple validation
-//         if (!formData.name || !formData.email || !formData.phone || !formData.address || !formData.city) {
+//         const { name, email, phone, address, city } = formData;
+//         if (!name || !email || !phone || !address || !city) {
 //             Swal.fire({
 //                 icon: "warning",
 //                 title: "Missing Details",
@@ -49,10 +51,10 @@
 //             return;
 //         }
 
-//         // generate random order id
+//         // dummy order id (random) - future me backend se aayega
 //         const orderId = Math.floor(100000 + Math.random() * 900000);
 
-//         // order object (future me isko localStorage/order history me save kar sakte ho)
+//         // dummy order object
 //         const order = {
 //             orderId,
 //             customer: formData,
@@ -63,10 +65,8 @@
 
 //         console.log("Order Placed:", order);
 
-//         // cart clear karo
+//         // cart clear karo aur success page pe navigate karo
 //         clearCart();
-
-//         // order success page pe navigate karo, orderId state ke sath
 //         navigate("/order-success", { state: { orderId, total: order.total } });
 //     };
 
@@ -209,6 +209,7 @@
 // export default CheckoutPage;
 
 
+
 import React, { useContext, useState } from "react";
 import cartContext from "../../context/cartContext/cartContext";
 import { useNavigate } from "react-router-dom";
@@ -276,7 +277,7 @@ const CheckoutPage = () => {
 
         // cart clear karo aur success page pe navigate karo
         clearCart();
-        navigate("/order-success", { state: { orderId, total: order.total } });
+        navigate("/orderSuccessPage", { state: { orderId, total: order.total } });
     };
 
     return (
@@ -369,7 +370,7 @@ const CheckoutPage = () => {
                         </label>
                     </div>
 
-                    <button type="submit" className="place-order-btn" onClick={()=>navigate('/orderSuccessPage')}>
+                    <button type="submit" className="place-order-btn">
                         Place Order
                     </button>
                 </form>
